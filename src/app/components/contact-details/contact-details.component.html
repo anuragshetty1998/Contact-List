@@ -1,0 +1,8 @@
+<h2>Contact details</h2>
+<div>
+  <h3>{{ contact.firstname + " " + contact.lastname }}</h3>
+  <p>{{ contact.email }}</p>
+  <p>{{ contact.phone }}</p>
+</div>
+
+<button (click)="deleteSelected(contact.id)">Delete</button>
