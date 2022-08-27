@@ -1,52 +1,99 @@
-<div>
-  <h2>ADD TO CONTACTS</h2>
-  <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
-    <div ngModelGroup="contactGroup" #contactTemp="ngModelGroup">
+<div class="add-contacts-page">
+  <div class="add-contacts-div mat-elevation-z8">
+    <h2>ADD TO CONTACTS</h2>
+    <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+      <!-- <div ngModelGroup="contactGroup" #contactTemp="ngModelGroup"> -->
       <div>
         <label for="first">First Name</label>
         <input
           type="text"
           id="first"
-          placeholder="Your name.."
+          placeholder="Your name"
           name="firstname"
+          #firstTemp="ngModel"
           ngModel
           required
         />
+        <small *ngIf="firstTemp.invalid && firstTemp.touched"
+          >First Name is required field.</small
+        >
       </div>
+      <br />
       <div>
         <label for="last">Last Name</label>
         <input
           type="text"
           id="last"
-          placeholder="Your Last name.."
+          placeholder="Your Last name"
           name="lastname"
+          #lastTemp="ngModel"
           ngModel
           required
         />
+        <small *ngIf="lastTemp.invalid && lastTemp.touched"
+          >Last Name is required field.</small
+        >
       </div>
+      <br />
       <div>
         <label for="phone">Phone Number</label>
         <input
-          type="string"
+          type="text"
           id="phone"
           placeholder="Your Phone Number"
           name="phone"
+          #phoneTemp="ngModel"
           ngModel
           required
+          pattern="^[0-9]*$"
+          minlength="10"
+          maxlength="10"
         />
+        <small
+          *ngIf="
+            phoneTemp.invalid &&
+            phoneTemp.touched &&
+            phoneTemp.errors['required']
+          "
+          >Phone number is required field.</small
+        >
+        <small
+          *ngIf="
+            phoneTemp.invalid &&
+            phoneTemp.touched &&
+            (phoneTemp.errors['minlength'] ||
+              phoneTemp.errors['maxlength'] ||
+              phoneTemp.errors['pattern'])
+          "
+          >Enter valid Phone number.</small
+        >
       </div>
-    </div>
-    <div>
-      <label for="mail">Email</label>
-      <input
-        type="text"
-        id="mail"
-        placeholder="Your Email"
-        name="email"
-        ngModel
-        email
-      />
-    </div>
-    <input type="submit" value="Submit" id="btn" />
-  </form>
+      <br />
+      <!-- </div> -->
+      <div>
+        <label for="mail">Email</label>
+        <input
+          type="email"
+          id="mail"
+          placeholder="Your Email"
+          name="email"
+          #emailTemp="ngModel"
+          ngModel
+          email
+        />
+        <small *ngIf="emailTemp.invalid">Enter valid email.</small>
+      </div>
+      <br />
+      <div></div>
+      <small
+        *ngIf="
+          contactForm.invalid && contactForm.touched && contactForm.submitted
+        "
+        >Enter required fields.</small
+      >
+      <input type="submit" value="Submit" id="btn" />
+      <br />
+    </form>
+  </div>
 </div>
+<!-- [disabled]="!contactForm.valid" -->

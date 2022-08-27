@@ -3,7 +3,7 @@ mat-toolbar {
   justify-content: space-between;
   align-items: center;
   background-color: rgb(147, 147, 243);
-  color: aliceblue;
+  color: rgb(255, 255, 255);
 }
 
 .menu-icon {
@@ -16,9 +16,10 @@ mat-sidenav-container {
 
 mat-sidenav {
   width: 12.5rem;
-  background: #f6f8f1;
+  background: #ffffff;
   color: rgb(85, 66, 66);
   margin-right: 1rem;
+  border-radius: 10px;
 }
 
 .menu-button {
@@ -27,7 +28,8 @@ mat-sidenav {
   align-items: center;
   justify-content: flex-start;
   font-size: 1.2rem;
-  margin-top: 1.3rem;
+  margin-bottom: 1.3rem;
+  margin-top: 2px;
   mat-icon {
     margin-right: 1rem;
     color: rgb(45, 74, 241);

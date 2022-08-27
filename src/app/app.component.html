@@ -5,17 +5,35 @@
   <h1>My Contacts</h1>
   <div></div>
 </mat-toolbar>
-<mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" class="mat-elevation-z8">
-    <button mat-button class="menu-button" routerLink="/contacts">
+<mat-sidenav-container hasBackdrop="false">
+  <mat-sidenav #sidenav mode="over" class="mat-elevation-z8" opened>
+    <button
+      mat-button
+      class="menu-button"
+      routerLink="/contacts"
+      [routerLinkActive]="'active'"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       <mat-icon> contact_phone</mat-icon>
       <span>Contacts</span>
     </button>
-    <button mat-button class="menu-button" routerLink="/add">
+    <button
+      mat-button
+      class="menu-button"
+      routerLink="/add"
+      [routerLinkActive]="'active'"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       <mat-icon>add_circle</mat-icon>
       <span>Add Contact</span>
     </button>
-    <button mat-button class="menu-button" routerLink="/groups">
+    <button
+      mat-button
+      class="menu-button"
+      routerLink="/groups"
+      [routerLinkActive]="'active'"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       <mat-icon>group</mat-icon>
       <span>Groups</span>
     </button>

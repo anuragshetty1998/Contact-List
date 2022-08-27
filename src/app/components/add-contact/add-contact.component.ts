@@ -29,10 +29,10 @@ export class AddContactComponent implements OnInit {
     // this.phone = Number(this.contactForm.value.contactGroup.phone);
     if (this.contactForm.valid) {
       this.contactService.addContact({
-        firstname: this.contactForm.value.contactGroup.firstname,
-        lastname: this.contactForm.value.contactGroup.lastname,
+        firstname: this.contactForm.value.firstname,
+        lastname: this.contactForm.value.lastname,
         email: this.contactForm.value.email,
-        phone: Number(this.contactForm.value.contactGroup.phone),
+        phone: Number(this.contactForm.value.phone),
         id: this.randomId(),
       });
     }

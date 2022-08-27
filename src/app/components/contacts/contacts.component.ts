@@ -69,6 +69,7 @@ export class ContactsComponent implements OnInit {
 
   deleteSelect() {
     this.contactService.deleteMultiple(this.checkArray);
+    this.checkArray = [];
     this.getData();
   }
 }

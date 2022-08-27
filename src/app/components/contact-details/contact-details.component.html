@@ -1,8 +1,20 @@
-<h2>Contact details</h2>
-<div>
-  <h3>{{ contact.firstname + " " + contact.lastname }}</h3>
-  <p>{{ contact.email }}</p>
-  <p>{{ contact.phone }}</p>
+<div class="details-page-div">
+  <div class="details-container mat-elevation-z8">
+    <div class="contact-image-div">
+      <div class="contact-image">
+        {{
+          contact.firstname[0].toUpperCase() + contact.lastname[0].toUpperCase()
+        }}
+      </div>
+    </div>
+    <div>
+      <h3>{{ contact.firstname + " " + contact.lastname }}</h3>
+      <p>{{ contact.email }}</p>
+      <p>{{ contact.phone }}</p>
+    </div>
+    <button class="delete-button" (click)="deleteSelected(contact.id)">
+      <mat-icon color="red">delete_outline</mat-icon>
+      <p>Delete</p>
+    </button>
+  </div>
 </div>
-
-<button (click)="deleteSelected(contact.id)">Delete</button>

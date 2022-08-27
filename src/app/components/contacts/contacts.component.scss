@@ -10,16 +10,14 @@
   width: 100vw;
   height: max-content;
   justify-content: center;
-  margin-top: 0.5rem;
+  //margin-top: 0.5rem;
   margin-bottom: 1rem;
   // background-color: bisque;
-
   input {
     border: 2px solid #ccc;
     transform: scale(1.2);
     margin-bottom: 8px;
   }
-
   span {
     font-size: 1.2rem;
     margin-top: 10px;
@@ -28,36 +26,109 @@
 }
 
 .bottom-div {
-  height: 80vh;
-  width: 60vw;
-  //background-color: rgb(228, 243, 212);
+  height: 74vh;
+  width: 45vw;
+  background-color: rgb(255, 255, 255);
   margin: auto;
-}
-
-table {
-  border-collapse: collapse;
-  width: 60vw;
-  display: flex;
-  flex-direction: column;
-}
-
-td,
-th {
-  text-align: left;
-  padding: 8px;
-  margin-top: 10px;
-  width: 60vw;
+  p {
+    padding: 0%;
+    margin: 0%;
+  }
+  margin-bottom: 20px;
 }
 
 .heading-tr {
-  font-size: 1.2rem;
+  display: flex;
+  font-size: 24px;
+  width: 100%;
+  background-color: burlywood;
+  height: 6%;
+  align-items: center;
+  position: relative;
 }
 
-.content-tr {
-  font-size: 1.1rem;
+.name-header-p {
+  position: relative;
+  left: 10px;
+}
+
+.phone-header-p {
+  position: absolute;
+  left: 22vw;
+}
+
+.contact-container-div {
+  width: 100%;
+  // background-color: rgb(238, 200, 48);
+  height: 92.5%;
+  //padding-top: 10px;
+  position: relative;
+  overflow: scroll;
+}
+
+.no-contacts-div {
+  font-size: 2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
+}
+
+.contact-sub-div {
+  font-size: 22px;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  color: rgb(43, 56, 56);
-  border: 1px solid rgb(246, 222, 222);
+  color: rgb(11, 92, 92);
   margin-bottom: 20px;
   background-color: #ffffff;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  p {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-transform: capitalize;
+  }
+  input {
+    position: absolute;
+    right: 4vw;
+    transform: scale(1.2);
+  }
+}
+
+.contact-sub-div:hover {
+  background-color: rgb(0 0 0 / 0.1);
+  padding: 3px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  // border: 0.1px solid rgb(0 0 0 / 0.4);
+}
+
+.delete-container {
+  width: 45vw;
+  background-color: rgba(255, 255, 255, 0.815);
+  margin: auto;
+  padding: 10px 0;
+}
+
+.delete-button {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.815);
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  margin: auto;
+  mat-icon {
+    transform: scale(1.5);
+    color: red;
+  }
+  p {
+    font-size: 1.3rem;
+    color: rgb(255, 255, 255);
+    margin: 0%;
+    padding-left: 10px;
+  }
 }
