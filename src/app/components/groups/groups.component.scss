@@ -69,5 +69,53 @@
 
 .phone-header-p {
   position: absolute;
-  left: 22vw;
+  left: 18vw;
+}
+
+.members-count {
+  position: absolute;
+  left: 20vw;
+}
+
+.contact-container-div {
+  width: 100%;
+  // background-color: rgb(238, 200, 48);
+  height: 92.5%;
+  //padding-top: 10px;
+  position: relative;
+  overflow: scroll;
+}
+
+.no-contacts-div {
+  font-size: 2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
+}
+
+.contact-sub-div {
+  font-size: 22px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: rgb(11, 92, 92);
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  p {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-transform: capitalize;
+  }
+}
+
+.contact-sub-div:hover {
+  background-color: rgb(0 0 0 / 0.1);
+  padding: 3px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }

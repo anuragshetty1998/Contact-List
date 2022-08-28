@@ -116,7 +116,7 @@
 
 .delete-button {
   display: flex;
-  background-color: rgba(0, 0, 0, 0.815);
+  background-color: red;
   width: fit-content;
   align-items: center;
   justify-content: center;
@@ -124,12 +124,12 @@
   margin: auto;
   mat-icon {
     transform: scale(1.5);
-    color: red;
+    color: rgb(240, 126, 126);
   }
   p {
     font-size: 1.3rem;
     color: rgb(255, 255, 255);
     margin: 0%;
-    padding-left: 10px;
+    padding: 3px 0px 0px 10px;
   }
 }

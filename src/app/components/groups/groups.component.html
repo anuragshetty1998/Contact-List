@@ -1,7 +1,9 @@
 <div class="group-page-div">
   <div class="add-button-div mat-elevation-z8">
-    <p class="group-num">{{ "Total Groups: 5" }}</p>
-    <button class="add-button">
+    <p class="group-num">
+      {{ "Total Groups: " + groupList.length }}
+    </p>
+    <button class="add-button" routerLink="/add-group">
       <mat-icon color="red">group_add</mat-icon>
       <p>ADD</p>
     </button>
@@ -10,6 +12,21 @@
     <div class="heading-tr">
       <p class="name-header-p">Name</p>
       <p class="phone-header-p">Number of People</p>
+    </div>
+    <div class="contact-container-div">
+      <div *ngIf="!(groupList.length > 0)" class="no-contacts-div">
+        <p>There is no group in list</p>
+      </div>
+      <div *ngFor="let group of groupList">
+        <div class="contact-sub-div" routerLink="/group-details/{{ group.id }}">
+          <p class="name-header-p">
+            {{ group.name }}
+          </p>
+          <p class="members-count">
+            {{ group.members.length }}
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,0 +1,30 @@
+<div class="details-page-div">
+  <div class="details-container mat-elevation-z8">
+    <h1>{{ group.name }}</h1>
+    <div class="group-sub-container">
+      <div *ngIf="!(contactList.length > 0)" class="no-contacts-div">
+        <p>There is no contacts in group</p>
+      </div>
+      <div
+        class="contact-container"
+        *ngFor="let contact of contactList"
+        routerLink="/contact-details/{{ contact.id }}"
+      >
+        <p class="name-text">
+          {{ contact.firstname + " " + contact.lastname }}
+        </p>
+        <p class="phone-text">{{ contact.phone }}</p>
+      </div>
+    </div>
+    <div>
+      <button class="delete-button" (click)="onDelete(group.id)">
+        <mat-icon>delete</mat-icon>
+        <p>Delete</p>
+      </button>
+      <button class="add-button">
+        <mat-icon>person_add</mat-icon>
+        <p>ADD</p>
+      </button>
+    </div>
+  </div>
+</div>

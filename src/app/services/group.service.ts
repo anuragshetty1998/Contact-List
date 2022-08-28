@@ -1,9 +1,39 @@
 import { Injectable } from '@angular/core';
-
+import { Group, Contact } from '../contact';
+import { ContactService } from './contact.service';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GroupService {
+  constructor(private contactService: ContactService) {}
 
-  constructor() { }
+  addGroup(groupData: Group) {
+    if (localStorage.getItem('groups')) {
+      let data: Group[] = JSON.parse(localStorage.getItem('groups'));
+      data.push(groupData);
+      localStorage.setItem('groups', JSON.stringify(data));
+    } else {
+      localStorage.setItem('groups', JSON.stringify([groupData]));
+    }
+  }
+
+  getGrouptList(): Group[] {
+    let data: Group[] = JSON.parse(localStorage.getItem('groups'));
+    data.map((group: Group) => {
+      let tempArray = [];
+      this.contactService.getContactList().map((contact: Contact) => {
+        if (group.members.includes(contact.id)) {
+          tempArray.push(contact.id);
+        }
+      });
+      group.members = tempArray;
+    });
+    return data;
+  }
+
+  deleteGroup(id: string) {
+    let data: Group[] = JSON.parse(localStorage.getItem('groups'));
+    let filterData: Group[] = data.filter((item) => item.id !== id);
+    localStorage.setItem('groups', JSON.stringify(filterData));
+  }
 }

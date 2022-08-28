@@ -6,3 +6,9 @@ export interface Contact {
   phone: number;
   select?: boolean;
 }
+
+export interface Group {
+  id: string;
+  name: string;
+  members: string[];
+}
