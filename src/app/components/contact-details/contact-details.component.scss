@@ -56,3 +56,24 @@
   bottom: 1rem;
   right: 1rem;
 }
+
+.subdetails-container {
+  // background-color: antiquewhite;
+  padding-left: 16px;
+  padding-top: 16px;
+  p {
+    font-size: 1.3rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+    color: rgba(214, 47, 47, 0.739);
+    margin-bottom: 1.5rem;
+    text-transform: capitalize;
+  }
+  h4 {
+    font-size: 1.5rem;
+    color: rgba(214, 47, 47, 0.739);
+    margin-bottom: 1.5rem;
+    text-transform: lowercase;
+  }
+}

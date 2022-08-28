@@ -7,12 +7,13 @@
 .top-div {
   display: flex;
   flex-direction: row;
-  width: 100vw;
+  // width: 45vw;
+  // margin: auto;
   height: max-content;
   justify-content: center;
-  //margin-top: 0.5rem;
+  background-color: rgb(255, 255, 255);
   margin-bottom: 1rem;
-  // background-color: bisque;
+  padding: 0.4rem 1rem;
   input {
     border: 2px solid #ccc;
     transform: scale(1.2);

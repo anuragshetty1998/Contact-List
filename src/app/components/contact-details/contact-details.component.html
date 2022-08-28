@@ -7,13 +7,22 @@
         }}
       </div>
     </div>
-    <div>
-      <h3>{{ contact.firstname + " " + contact.lastname }}</h3>
-      <p>{{ contact.email }}</p>
-      <p>{{ contact.phone }}</p>
+    <div class="subdetails-container">
+      <div>
+        <p>{{ "Name:" }}</p>
+        <h3>{{ contact.firstname + " " + contact.lastname }}</h3>
+      </div>
+      <div>
+        <p>{{ "Phone:" }}</p>
+        <h3>{{ contact.phone }}</h3>
+      </div>
+      <div *ngIf="contact.email">
+        <p>{{ "Email:" }}</p>
+        <h4>{{ contact.email.toLowerCase() }}</h4>
+      </div>
     </div>
     <button class="delete-button" (click)="deleteSelected(contact.id)">
-      <mat-icon color="red">delete_outline</mat-icon>
+      <mat-icon>delete</mat-icon>
       <p>Delete</p>
     </button>
   </div>

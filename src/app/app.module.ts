@@ -14,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { AddGroupComponent } from './components/add-group/add-group.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
     GroupsComponent,
     ContactDetailsComponent,
     SearchComponent,
+    AddGroupComponent,
   ],
   imports: [
     BrowserModule,
