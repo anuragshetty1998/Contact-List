@@ -5,15 +5,16 @@
       <div *ngIf="!(contactList.length > 0)" class="no-contacts-div">
         <p>There is no contacts in group</p>
       </div>
-      <div
-        class="contact-container"
-        *ngFor="let contact of contactList"
-        routerLink="/contact-details/{{ contact.id }}"
-      >
-        <p class="name-text">
-          {{ contact.firstname + " " + contact.lastname }}
-        </p>
-        <p class="phone-text">{{ contact.phone }}</p>
+      <div class="contact-container" *ngFor="let contact of contactList">
+        <div routerLink="/contact-details/{{ contact.id }}">
+          <p class="name-text">
+            {{ contact.firstname + " " + contact.lastname }}
+          </p>
+          <p class="phone-text">{{ contact.phone }}</p>
+        </div>
+        <div (click)="removeSelected(contact.id)">
+          <mat-icon>delete_forever</mat-icon>
+        </div>
       </div>
     </div>
     <div>

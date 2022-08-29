@@ -24,6 +24,10 @@ export class GroupDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.groupId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.getGroup();
+  }
+
+  getGroup() {
     this.group = this.groupService
       .getGrouptList()
       .find((x) => x.id === this.groupId);
@@ -41,5 +45,11 @@ export class GroupDetailsComponent implements OnInit {
   onDelete(id: string) {
     this.groupService.deleteGroup(id);
     this.route.navigate(['groups']);
+  }
+
+  removeSelected(id: string) {
+    this.groupService.removeContact(this.groupId, id);
+    this.contactList = [];
+    this.getGroup();
   }
 }

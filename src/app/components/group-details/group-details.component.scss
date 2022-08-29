@@ -35,6 +35,13 @@
   height: fit-content;
   margin-bottom: 1rem;
   border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mat-icon {
+    color: red;
+    padding-right: 10px;
+  }
 }
 .contact-container:hover {
   background-color: rgba(224, 245, 35, 0.541);

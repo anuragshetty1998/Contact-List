@@ -35,7 +35,7 @@ export class AddContactComponent implements OnInit {
         phone: Number(this.contactForm.value.phone),
         id: this.randomId(),
       });
+      this.contactForm.reset();
     }
-    this.contactForm.reset();
   }
 }

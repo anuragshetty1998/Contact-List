@@ -36,4 +36,16 @@ export class GroupService {
     let filterData: Group[] = data.filter((item) => item.id !== id);
     localStorage.setItem('groups', JSON.stringify(filterData));
   }
+
+  removeContact(groupId: string, contactId: string) {
+    let data: Group[] = JSON.parse(localStorage.getItem('groups'));
+    data = data.map((group: Group) => {
+      if (group.id === groupId) {
+        group.members.splice(group.members.indexOf(contactId), 1);
+        return group;
+      }
+      return group;
+    });
+    localStorage.setItem('groups', JSON.stringify(data));
+  }
 }
