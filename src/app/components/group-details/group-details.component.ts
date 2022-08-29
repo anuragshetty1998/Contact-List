@@ -13,7 +13,10 @@ import { Contact } from '../../contact';
 export class GroupDetailsComponent implements OnInit {
   groupId: string = '';
   group: Group;
+  membertList: Contact[] = [];
   contactList: Contact[] = [];
+  editEnable: boolean = false;
+  idArray: string[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -37,6 +40,11 @@ export class GroupDetailsComponent implements OnInit {
   getContacts() {
     this.contactService.getContactList().map((item: Contact) => {
       if (this.group.members.includes(item.id)) {
+        this.membertList.push(item);
+        item.select = true;
+        this.contactList.push(item);
+      } else {
+        item.select = false;
         this.contactList.push(item);
       }
     });
@@ -49,7 +57,33 @@ export class GroupDetailsComponent implements OnInit {
 
   removeSelected(id: string) {
     this.groupService.removeContact(this.groupId, id);
-    this.contactList = [];
+    this.membertList = [];
     this.getGroup();
+  }
+
+  onAddButton() {
+    this.editEnable = !this.editEnable;
+    if (!this.editEnable) {
+      this.contactList.map((item: Contact) => {
+        if (item.select) {
+          this.idArray.push(item.id);
+        }
+      });
+      this.groupService.editGroup(this.groupId, this.idArray);
+    }
+    this.contactList = [];
+    this.membertList = [];
+    this.idArray = [];
+    this.getGroup();
+  }
+
+  toggleSelected(id: string, valueSelect: boolean) {
+    this.contactList = this.contactList.map((item: Contact) => {
+      if (item.id === id) {
+        item.select = valueSelect;
+        return item;
+      }
+      return item;
+    });
   }
 }

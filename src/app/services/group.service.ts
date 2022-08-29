@@ -48,4 +48,16 @@ export class GroupService {
     });
     localStorage.setItem('groups', JSON.stringify(data));
   }
+
+  editGroup(groupId: string, idArray: string[]) {
+    let data: Group[] = JSON.parse(localStorage.getItem('groups'));
+    data = data.map((group: Group) => {
+      if (group.id === groupId) {
+        group.members = idArray;
+        return group;
+      }
+      return group;
+    });
+    localStorage.setItem('groups', JSON.stringify(data));
+  }
 }

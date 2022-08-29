@@ -23,6 +23,16 @@
 .group-sub-container {
   height: 82%;
   position: relative;
+  //overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-edit-enable {
+  height: 100%;
+  width: 100%;
+  position: relative;
   overflow: scroll;
   display: flex;
   flex-direction: column;
@@ -114,4 +124,38 @@
   position: absolute;
   bottom: 1rem;
   left: 1rem;
+}
+
+.all-contact-edit {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(251, 251, 251);
+  padding: 10px 0px;
+}
+
+.all-contact-container {
+  //  background-color: rgba(248, 219, 212, 0.459);
+  width: 80%;
+  height: fit-content;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mat-icon {
+    padding-right: 10px;
+  }
+}
+
+.remove-icon {
+  color: red;
+}
+
+.add-icon {
+  color: green;
 }

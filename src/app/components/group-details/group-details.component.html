@@ -2,29 +2,70 @@
   <div class="details-container mat-elevation-z8">
     <h1>{{ group.name }}</h1>
     <div class="group-sub-container">
-      <div *ngIf="!(contactList.length > 0)" class="no-contacts-div">
+      <div *ngIf="!(membertList.length > 0)" class="no-contacts-div">
         <p>There is no contacts in group</p>
       </div>
-      <div class="contact-container" *ngFor="let contact of contactList">
-        <div routerLink="/contact-details/{{ contact.id }}">
-          <p class="name-text">
-            {{ contact.firstname + " " + contact.lastname }}
-          </p>
-          <p class="phone-text">{{ contact.phone }}</p>
+      <div *ngIf="!editEnable" class="contact-edit-enable">
+        <div class="contact-container" *ngFor="let contact of membertList">
+          <div routerLink="/contact-details/{{ contact.id }}">
+            <p class="name-text">
+              {{ contact.firstname + " " + contact.lastname }}
+            </p>
+            <p class="phone-text">{{ contact.phone }}</p>
+          </div>
+          <div (click)="removeSelected(contact.id)">
+            <mat-icon>delete_forever</mat-icon>
+          </div>
         </div>
-        <div (click)="removeSelected(contact.id)">
-          <mat-icon>delete_forever</mat-icon>
+      </div>
+
+      <div *ngIf="editEnable" class="all-contact-edit">
+        <div
+          class="all-contact-container"
+          *ngFor="let contact of contactList"
+          [ngStyle]="{
+            backgroundColor: contact.select
+              ? 'rgba(190, 248, 188, 0.541)'
+              : 'rgba(248, 219, 212, 0.459)'
+          }"
+        >
+          <div routerLink="/contact-details/{{ contact.id }}">
+            <p class="name-text">
+              {{ contact.firstname + " " + contact.lastname }}
+            </p>
+            <p class="phone-text">{{ contact.phone }}</p>
+          </div>
+          <div
+            (click)="toggleSelected(contact.id, false)"
+            *ngIf="contact.select"
+          >
+            <mat-icon class="remove-icon">remove_circle</mat-icon>
+          </div>
+          <div
+            (click)="toggleSelected(contact.id, true)"
+            *ngIf="!contact.select"
+          >
+            <mat-icon class="add-icon">add_circle</mat-icon>
+          </div>
         </div>
       </div>
     </div>
     <div>
-      <button class="delete-button" (click)="onDelete(group.id)">
+      <button
+        class="delete-button"
+        (click)="onDelete(group.id)"
+        *ngIf="!editEnable"
+      >
         <mat-icon>delete</mat-icon>
         <p>Delete</p>
       </button>
-      <button class="add-button">
+      <button class="add-button" (click)="onAddButton()" *ngIf="!editEnable">
         <mat-icon>person_add</mat-icon>
         <p>ADD</p>
+      </button>
+      <button class="add-button" (click)="onAddButton()" *ngIf="editEnable">
+        <mat-icon>done_outline</mat-icon>
+        <p>DONE</p>
       </button>
     </div>
   </div>
