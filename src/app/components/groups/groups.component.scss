@@ -52,38 +52,29 @@
   margin-top: 20px;
 }
 
-.heading-tr {
-  display: flex;
-  font-size: 24px;
-  width: 100%;
-  background-color: burlywood;
-  height: 6%;
-  align-items: center;
-  position: relative;
-}
-
 .name-header-p {
   position: relative;
   left: 10px;
-}
-
-.phone-header-p {
-  position: absolute;
-  left: 18vw;
+  font-size: 2rem;
+  padding-bottom: 16px;
+  color: #ffffff;
 }
 
 .members-count {
-  position: absolute;
-  left: 20vw;
+  position: relative;
+  left: 10px;
+  font-size: 1.3rem;
 }
 
 .contact-container-div {
   width: 100%;
-  // background-color: rgb(238, 200, 48);
   height: 92.5%;
   //padding-top: 10px;
   position: relative;
   overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .no-contacts-div {
@@ -101,12 +92,17 @@
 .contact-sub-div {
   font-size: 22px;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  color: rgb(11, 92, 92);
-  margin-bottom: 20px;
-  background-color: #ffffff;
   height: max-content;
   display: flex;
   align-items: center;
+  background-color: rgba(246, 112, 112, 0.541);
+  width: 60%;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0 0.5rem 0.5rem;
   p {
     margin-bottom: 10px;
     margin-top: 10px;
@@ -115,7 +111,7 @@
 }
 
 .contact-sub-div:hover {
-  background-color: rgb(0 0 0 / 0.1);
-  padding: 3px;
+  background-color: rgba(241, 53, 53, 0.698);
+  padding: 5px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }

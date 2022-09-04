@@ -8,22 +8,22 @@
       <p>ADD</p>
     </button>
   </div>
-  <div class="bottom-div mat-elevation-z8">
-    <div class="heading-tr">
-      <p class="name-header-p">Name</p>
-      <p class="phone-header-p">Number of People</p>
-    </div>
+  <div class="bottom-div">
     <div class="contact-container-div">
       <div *ngIf="!(groupList.length > 0)" class="no-contacts-div">
         <p>There is no group in list</p>
       </div>
-      <div *ngFor="let group of groupList">
-        <div class="contact-sub-div" routerLink="/group-details/{{ group.id }}">
+      <div
+        *ngFor="let group of groupList"
+        class="contact-sub-div mat-elevation-z8"
+        routerLink="/group-details/{{ group.id }}"
+      >
+        <div>
           <p class="name-header-p">
             {{ group.name }}
           </p>
           <p class="members-count">
-            {{ group.members.length }}
+            {{ group.members.length + "members" }}
           </p>
         </div>
       </div>

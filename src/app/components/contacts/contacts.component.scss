@@ -28,9 +28,14 @@
 
 .bottom-div {
   height: 74vh;
-  width: 45vw;
+  width: 35vw;
   background-color: rgb(255, 255, 255);
   margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
   p {
     padding: 0%;
     margin: 0%;
@@ -38,30 +43,23 @@
   margin-bottom: 20px;
 }
 
-.heading-tr {
-  display: flex;
-  font-size: 24px;
-  width: 100%;
-  background-color: burlywood;
-  height: 6%;
-  align-items: center;
-  position: relative;
-}
-
 .name-header-p {
   position: relative;
   left: 10px;
+  font-size: 1.8rem;
+  padding-bottom: 16px;
 }
 
 .phone-header-p {
-  position: absolute;
-  left: 22vw;
+  position: relative;
+  left: 10px;
+  font-size: 1.1rem;
 }
 
 .contact-container-div {
-  width: 100%;
-  // background-color: rgb(238, 200, 48);
-  height: 92.5%;
+  width: 75%;
+  //background-color: rgb(238, 200, 48);
+  height: 85.5%;
   //padding-top: 10px;
   position: relative;
   overflow: scroll;
@@ -84,10 +82,12 @@
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   color: rgb(11, 92, 92);
   margin-bottom: 20px;
-  background-color: #ffffff;
+  background-color: rgba(239, 248, 158, 0.541);
+  border-radius: 5px;
   height: max-content;
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
   p {
     margin-bottom: 10px;
     margin-top: 10px;
@@ -101,7 +101,7 @@
 }
 
 .contact-sub-div:hover {
-  background-color: rgb(0 0 0 / 0.1);
+  background-color: rgba(224, 245, 35, 0.541);
   padding: 3px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   // border: 0.1px solid rgb(0 0 0 / 0.4);

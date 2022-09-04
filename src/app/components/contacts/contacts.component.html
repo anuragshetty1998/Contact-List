@@ -10,10 +10,6 @@
     />
   </div>
   <div class="bottom-div mat-elevation-z8">
-    <div class="heading-tr">
-      <p class="name-header-p">Name</p>
-      <p class="phone-header-p">Contact Number</p>
-    </div>
     <div class="contact-container-div">
       <div *ngIf="!(contactList.length > 0)" class="no-contacts-div">
         <p>There is no contacts in list</p>
@@ -29,18 +25,20 @@
           "
         >
           <div class="contact-sub-div">
-            <p
-              routerLink="/contact-details/{{ contact.id }}"
-              class="name-header-p"
-            >
-              {{ contact.firstname + " " + contact.lastname }}
-            </p>
-            <p
-              class="phone-header-p"
-              routerLink="/contact-details/{{ contact.id }}"
-            >
-              {{ contact.phone }}
-            </p>
+            <div>
+              <p
+                routerLink="/contact-details/{{ contact.id }}"
+                class="name-header-p"
+              >
+                {{ contact.firstname + " " + contact.lastname }}
+              </p>
+              <p
+                class="phone-header-p"
+                routerLink="/contact-details/{{ contact.id }}"
+              >
+                {{ contact.phone }}
+              </p>
+            </div>
             <input
               type="checkbox"
               value="{{ contact.id }}"
@@ -50,10 +48,13 @@
           </div>
         </div>
       </div>
+      <div></div>
     </div>
-  </div>
-  <div class="delete-container mat-elevation-z8" *ngIf="checkArray.length > 0">
-    <button class="delete-button" (click)="deleteSelect()">
+    <button
+      class="delete-button"
+      (click)="deleteSelect()"
+      *ngIf="checkArray.length > 0"
+    >
       <mat-icon color="red">delete</mat-icon>
       <p>Delete</p>
     </button>
