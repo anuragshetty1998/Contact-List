@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ContactService } from '../../services/contact.service';
 import { GroupService } from '../../services/group.service';
-import { Contact } from '../../contact';
-import { Router } from '@angular/router';
+import { Contact, Group } from '../../contact';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-group',
@@ -12,17 +12,19 @@ import { Router } from '@angular/router';
 })
 export class AddGroupComponent implements OnInit {
   contactList: Contact[];
-  checkArray: string[] = [];
-  checkSelected: boolean = false;
-
+  contactId: boolean;
+  groupList: Group[] = [];
+  finalList = [];
   selectedArray: string[] = [];
+  selectedMembers = [];
   @ViewChild('groupForm') groupForm: NgForm;
   grpImgUrl: string = '../../../assets/group-icon.png';
 
   constructor(
     private groupService: GroupService,
     private contactService: ContactService,
-    private route: Router
+    private route: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   randomId() {
@@ -30,7 +32,11 @@ export class AddGroupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.contactId =
+      this.activatedRoute.snapshot['_routerState'].url === '/delete';
     this.getData();
+    this.getGroups();
+    this.getFianlList();
   }
 
   getData() {
@@ -41,15 +47,20 @@ export class AddGroupComponent implements OnInit {
     this.contactList = data;
   }
 
-  checkChange(event: any) {
-    let checkId = event.target.value;
-    let checkStatus = event.target.checked;
-    this.checkSelected = true;
-    if (checkStatus) {
-      this.checkArray.push(checkId);
+  getGroups() {
+    let data = this.groupService.getGrouptList().map((item) => {
+      item.select = false;
+      return item;
+    });
+    if (data) {
+      this.groupList = data;
     } else {
-      this.checkArray.splice(this.checkArray.indexOf(checkId), 1);
+      this.groupList = [];
     }
+  }
+
+  getFianlList() {
+    this.finalList = [...this.contactList, ...this.groupList];
   }
 
   onSelectFile(event: any) {
@@ -64,24 +75,36 @@ export class AddGroupComponent implements OnInit {
 
   getSelected(data: any) {
     this.selectedArray = data;
-    console.log(this.selectedArray);
+    this.selectedMembers = [];
+    this.getSelectedMembers();
+  }
+
+  getSelectedMembers() {
+    this.finalList.map((item) => {
+      if (this.selectedArray.includes(item.id)) {
+        this.selectedMembers.push(item);
+      }
+    });
   }
 
   onSubmit() {
-    if (this.groupForm.valid) {
-      this.groupService.addGroup({
-        id: this.randomId(),
-        name: this.groupForm.value.groupname,
-        members: this.selectedArray,
-        date: Date.now(),
-        image: this.grpImgUrl,
-      });
-      this.grpImgUrl = '../../../assets/profile.png';
+    if (!this.contactId) {
+      if (this.groupForm.valid) {
+        this.groupService.addGroup({
+          id: this.randomId(),
+          name: this.groupForm.value.groupname,
+          members: this.selectedArray,
+          date: Date.now(),
+          image: this.grpImgUrl,
+        });
+        this.grpImgUrl = '../../../assets/profile.png';
+        this.route.navigate(['']);
+      }
+      this.groupForm.reset();
+      this.getData();
+    } else {
+      this.groupService.deleteContactGroup(this.selectedArray);
       this.route.navigate(['']);
     }
-    this.groupForm.reset();
-    this.getData();
-    this.checkArray = [];
-    this.checkSelected = false;
   }
 }

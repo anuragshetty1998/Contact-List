@@ -3,16 +3,17 @@
     <app-contact-list (selectEvent)="getSelected($event)"></app-contact-list>
   </div>
   <div class="contacts-details">
-    <div class="header-div">
+    <div class="header-div" *ngIf="!contactId">
       <h2>ADD GROUP</h2>
     </div>
     <div class="details-container mat-elevation-z8">
-      <div class="image-div">
-        <img [src]="grpImgUrl" />
-        <input type="file" (change)="onSelectFile($event)" />
+      <div class="image-div" *ngIf="!contactId">
+        <img [src]="grpImgUrl" (click)="groupImage.click()" />
+        <input type="file" (change)="onSelectFile($event)" #groupImage />
       </div>
+      <h2 *ngIf="contactId">Delete Contacts/Groups</h2>
       <form (ngSubmit)="onSubmit()" #groupForm="ngForm">
-        <div>
+        <div *ngIf="!contactId">
           <label for="first">Group Name</label>
           <br />
           <input
@@ -30,11 +31,18 @@
           >
         </div>
         <br />
-        <small *ngIf="groupForm.invalid && checkSelected && groupForm.submitted"
+        <div class="seleced-members">
+          <div *ngFor="let contact of selectedMembers" class="members">
+            <img src="{{ contact.image }}" />
+            <h3>{{ contact.name }}</h3>
+          </div>
+        </div>
+        <small *ngIf="groupForm.invalid && groupForm.submitted"
           >Enter required fields.</small
         >
         <div style="position: relative; width: 100%">
-          <input type="submit" value="Submit" id="btn" />
+          <input type="submit" value="Submit" id="btn" *ngIf="!contactId" />
+          <input type="submit" value="Delete" id="dlt-btn" *ngIf="contactId" />
         </div>
       </form>
     </div>

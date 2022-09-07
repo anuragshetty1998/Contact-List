@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'contact-details/:id', component: ContactDetailsComponent },
   { path: 'groups', component: GroupsComponent },
   { path: 'add-group', component: AddGroupComponent },
+  { path: 'delete', component: AddGroupComponent },
   { path: 'group-details/:id', component: GroupDetailsComponent },
   { path: '**', redirectTo: '' },
 ];

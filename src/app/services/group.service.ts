@@ -63,4 +63,11 @@ export class GroupService {
     });
     localStorage.setItem('groups', JSON.stringify(data));
   }
+
+  deleteContactGroup(dataArray: string[]) {
+    dataArray.map((item: string) => {
+      this.deleteGroup(item);
+      this.contactService.deleteContact(item);
+    });
+  }
 }

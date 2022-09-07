@@ -9,8 +9,8 @@
     <div class="add-contacts-page">
       <div class="add-contacts-div mat-elevation-z8">
         <div class="image-div">
-          <img [src]="imgUrl" />
-          <input type="file" (change)="onSelectFile($event)" />
+          <img [src]="imgUrl" (click)="contactImage.click()" />
+          <input type="file" (change)="onSelectFile($event)" #contactImage />
         </div>
 
         <form (ngSubmit)="onSubmit()" #contactForm="ngForm">

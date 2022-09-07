@@ -16,4 +16,5 @@ export interface Group {
   members: string[];
   image?: string;
   date?: number;
+  select?: boolean;
 }

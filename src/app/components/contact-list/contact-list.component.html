@@ -1,7 +1,7 @@
 <div>
   <div class="contactlist-header">
     <div class="profile-image-div">
-      <img src="../../../assets/profile.png" />
+      <img src="../../../assets/profile-icon.jpeg" />
     </div>
     <div>
       <button
@@ -20,6 +20,10 @@
           <mat-icon>group_add</mat-icon>
           <span>New Group</span>
         </button>
+        <button mat-menu-item routerLink="/delete">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
       </mat-menu>
     </div>
   </div>
@@ -27,7 +31,7 @@
     <app-search (searchEvent)="getSearchValue($event)"></app-search>
   </div>
   <div class="contactlist-list">
-    <div *ngFor="let contact of contactList">
+    <div *ngFor="let contact of finalList">
       <div
         *ngIf="
           searchTerm === '' ||
@@ -39,7 +43,9 @@
           class="contact-container"
           [ngStyle]="{
             backgroundColor: contact.select
-              ? 'rgba(190, 248, 188, 0.541)'
+              ? contactId === '/add-group'
+                ? 'rgba(190, 248, 188, 0.541)'
+                : '#fa4b4b6c'
               : 'rgba(255, 255, 255)'
           }"
           (click)="contactClick(contact.id)"
