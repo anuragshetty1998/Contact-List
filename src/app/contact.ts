@@ -5,10 +5,15 @@ export interface Contact {
   email: string;
   phone: number;
   select?: boolean;
+  name?: string;
+  image?: string;
+  date?: number;
 }
 
 export interface Group {
   id: string;
   name: string;
   members: string[];
+  image?: string;
+  date?: number;
 }

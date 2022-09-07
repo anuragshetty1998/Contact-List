@@ -16,6 +16,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { AddGroupComponent } from './components/add-group/add-group.component';
 import { GroupDetailsComponent } from './components/group-details/group-details.component';
+import { ListComponent } from './components/list/list.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { DetailsComponent } from './components/details/details.component';
+import { ContactListComponent } from './components/contact-list/contact-list.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,9 @@ import { GroupDetailsComponent } from './components/group-details/group-details.
     SearchComponent,
     AddGroupComponent,
     GroupDetailsComponent,
+    ListComponent,
+    DetailsComponent,
+    ContactListComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +44,7 @@ import { GroupDetailsComponent } from './components/group-details/group-details.
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

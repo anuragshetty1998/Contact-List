@@ -1,29 +1,54 @@
-<div class="details-page-div">
-  <div class="details-container mat-elevation-z8">
-    <div class="contact-image-div">
-      <div class="contact-image">
-        {{
-          contact.firstname[0].toUpperCase() + contact.lastname[0].toUpperCase()
-        }}
-      </div>
-    </div>
-    <div class="subdetails-container">
-      <div>
-        <p>{{ "Name:" }}</p>
+<div class="display-div">
+  <div class="contacts-container">
+    <app-list></app-list>
+  </div>
+  <div class="contacts-details">
+    <div class="header-div">
+      <div class="profile-image-div">
+        <img src="{{ contact.image }}" />
         <h3>{{ contact.firstname + " " + contact.lastname }}</h3>
       </div>
       <div>
-        <p>{{ "Phone:" }}</p>
-        <h3>{{ contact.phone }}</h3>
-      </div>
-      <div *ngIf="contact.email">
-        <p>{{ "Email:" }}</p>
-        <h4>{{ contact.email.toLowerCase() }}</h4>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="menu button"
+        >
+          <mat-icon class="menu-icon">more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button
+            mat-menu-item
+            (click)="deleteSelected(contact.id)"
+            class="delete-icon"
+          >
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
       </div>
     </div>
-    <button class="delete-button" (click)="deleteSelected(contact.id)">
-      <mat-icon>delete</mat-icon>
-      <p>Delete</p>
-    </button>
+    <div class="details-page-div">
+      <div class="details-container mat-elevation-z8">
+        <h3>{{ contact.date | date: "medium" }}</h3>
+        <div class="contact-image-div">
+          <img src="{{ contact.image }}" />
+        </div>
+        <div class="subdetails-container">
+          <div>
+            <p>{{ "Name:" }}</p>
+            <h3>{{ contact.firstname + " " + contact.lastname }}</h3>
+          </div>
+          <div>
+            <p>{{ "Phone:" }}</p>
+            <h3>{{ contact.phone }}</h3>
+          </div>
+          <div *ngIf="contact.email">
+            <p>{{ "Email:" }}</p>
+            <h4>{{ contact.email.toLowerCase() }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

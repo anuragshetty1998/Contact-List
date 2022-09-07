@@ -1,0 +1,113 @@
+.contactlist-header {
+  background-color: #f0f2f5;
+  width: 100%;
+  height: 38px;
+  padding: 10px 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // z-index: 1000;
+  mat-icon {
+    transform: scale(1.2);
+  }
+}
+.menu-icon {
+  color: #54656f;
+  transform: scale(1.2);
+  padding-right: 100px;
+}
+
+.profile-image-div {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  position: relative;
+  background-color: #f3cd4eb7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.contactlist-search {
+  background-color: #fff;
+  width: 100%;
+  height: 45.5px;
+  padding: 0 12px;
+  border-bottom: 1.2px solid #f0f2f5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.contactlist-list {
+  background-color: aquamarine;
+  width: 100%;
+  position: relative;
+  height: 100%;
+  overflow: scroll;
+}
+
+.contact-container {
+  width: 100%;
+  height: 72px;
+  //position: absolute;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+  padding: 0px 12px;
+  display: flex;
+  align-items: center;
+  h2 {
+    color: #111b21;
+    font-size: 18px;
+    margin: 0px;
+  }
+}
+
+.contact-image-div {
+  height: 49px;
+  width: 49px;
+  border-radius: 50%;
+  position: relative;
+  background-color: #f0f2f5b7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.contact-details-div {
+  // background-color: aquamarine;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1.2px solid #d4d4d4cb;
+  position: relative;
+  // margin-right: 10px;
+  h3 {
+    color: #667781;
+    position: absolute;
+    right: 0;
+    font-size: 14px;
+    padding-bottom: 25px;
+  }
+}
+
+.contact-subcontainer {
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}

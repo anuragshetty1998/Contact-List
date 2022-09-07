@@ -1,3 +1,75 @@
+.display-div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+}
+.contacts-container {
+  position: relative;
+  overflow: hidden;
+  // z-index: 100;
+  height: 100%;
+  // border-right: 10px solid #f0f2f500;
+  width: 27%;
+  background-color: rgba(255, 255, 255, 0.918);
+}
+
+.contacts-details {
+  width: 73%;
+  height: 100%;
+  background-color: rgba(255, 225, 187, 0.829);
+  background-image: url("../../../assets/background-img.jpeg");
+  background-size: cover;
+}
+
+.header-div {
+  background-color: #f0f2f5;
+  width: 97.3%;
+  height: 38px;
+  padding: 10px 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-left: 1px solid rgba(168, 168, 168, 0.548);
+  // z-index: 1000;
+}
+.delete-icon {
+  mat-icon {
+    transform: scale(1.3);
+    color: red;
+    margin: 5px;
+  }
+  font-size: 18px;
+}
+
+.menu-icon {
+  color: #54656f;
+  transform: scale(1.2);
+  padding-right: 100px;
+}
+
+.profile-image-div {
+  // height: 40px;
+  // width: 40px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  h3 {
+    padding-left: 10px;
+    font-size: 24px;
+    margin: 0;
+  }
+}
 .details-page-div {
   position: relative;
   height: 100%;
@@ -5,38 +77,102 @@
 
 .details-container {
   //height: fit-content;
-  height: 65vh;
-  width: 25vw;
+  width: 30vw;
   background-color: rgb(255, 255, 255);
   margin: auto;
   margin-top: 58px;
   padding: 1.3rem 1rem;
+  height: 80%;
   position: relative;
-  h1 {
-    color: rgba(113, 59, 240, 0.904);
-    font-size: 2.3rem;
-    text-align: center;
-    text-transform: capitalize;
+}
+
+.contact-image-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  img {
+    width: 250px;
+    height: 250px;
   }
 }
 
-.group-sub-container {
-  height: 82%;
-  position: relative;
-  //overflow: scroll;
+.contact-image {
+  height: 100px;
+  width: 100px;
+  background-color: #bbb;
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  font-size: 2.7rem;
+  font-family: fantasy;
 }
 
-.contact-edit-enable {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  overflow: scroll;
+.delete-button {
   display: flex;
-  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.739);
+  width: fit-content;
   align-items: center;
+  justify-content: center;
+  padding: 0.6rem;
+  margin: auto;
+  mat-icon {
+    transform: scale(1.3);
+    color: red;
+  }
+  p {
+    font-size: 1.2rem;
+    color: rgb(255, 255, 255);
+    margin: 0%;
+    padding-left: 10px;
+  }
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.subdetails-container {
+  // background-color: antiquewhite;
+  padding-left: 16px;
+  padding-top: 16px;
+  p {
+    font-size: 1.3rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+    color: rgba(214, 47, 47, 0.739);
+    margin-bottom: 1.5rem;
+    text-transform: capitalize;
+  }
+  h4 {
+    font-size: 1.5rem;
+    color: rgba(214, 47, 47, 0.739);
+    margin-bottom: 1.5rem;
+    text-transform: lowercase;
+  }
+}
+
+.group-name-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  h1 {
+    font-size: 40px;
+  }
+}
+
+.no-contacts-div {
+  font-size: 2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
 }
 
 .contact-container {
@@ -51,6 +187,12 @@
   mat-icon {
     color: red;
     padding-right: 10px;
+  }
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 10px 0px 0px 10px;
   }
 }
 .contact-container:hover {
@@ -68,94 +210,8 @@
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-.no-contacts-div {
-  font-size: 2rem;
+.scroll-members {
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  p {
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  }
-}
-
-.delete-button {
-  display: flex;
-  background-color: red;
-  width: fit-content;
-  align-items: center;
-  justify-content: center;
-  padding: 0.6rem;
-  margin: auto;
-  mat-icon {
-    transform: scale(1.3);
-    color: rgb(240, 126, 126);
-  }
-  p {
-    font-size: 1.2rem;
-    color: rgb(255, 255, 255);
-    margin: 0%;
-    padding: 3px 0px 0px 10px;
-  }
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-}
-
-.add-button {
-  display: flex;
-  background-color: #45a049;
-  width: fit-content;
-  align-items: center;
-  justify-content: center;
-  padding: 0.6rem;
-  margin: auto;
-  mat-icon {
-    transform: scale(1.3);
-    color: rgb(125, 243, 28);
-  }
-  p {
-    font-size: 1.2rem;
-    color: rgb(255, 255, 255);
-    margin: 0%;
-    padding: 5px 0px 0px 13px;
-  }
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-}
-
-.all-contact-edit {
-  height: 100%;
-  width: 100%;
-  position: relative;
+  height: 350px;
   overflow: scroll;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: rgb(251, 251, 251);
-  padding: 10px 0px;
-}
-
-.all-contact-container {
-  //  background-color: rgba(248, 219, 212, 0.459);
-  width: 80%;
-  height: fit-content;
-  margin-bottom: 1rem;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  mat-icon {
-    padding-right: 10px;
-  }
-}
-
-.remove-icon {
-  color: red;
-}
-
-.add-icon {
-  color: green;
 }

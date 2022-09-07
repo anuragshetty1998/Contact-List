@@ -19,16 +19,19 @@ export class GroupService {
 
   getGrouptList(): Group[] {
     let data: Group[] = JSON.parse(localStorage.getItem('groups'));
-    data.map((group: Group) => {
-      let tempArray = [];
-      this.contactService.getContactList().map((contact: Contact) => {
-        if (group.members.includes(contact.id)) {
-          tempArray.push(contact.id);
-        }
+    if (data) {
+      data.map((group: Group) => {
+        let tempArray = [];
+        this.contactService.getContactList().map((contact: Contact) => {
+          if (group.members.includes(contact.id)) {
+            tempArray.push(contact.id);
+          }
+        });
+        group.members = tempArray;
       });
-      group.members = tempArray;
-    });
-    return data;
+      return data;
+    }
+    return [];
   }
 
   deleteGroup(id: string) {

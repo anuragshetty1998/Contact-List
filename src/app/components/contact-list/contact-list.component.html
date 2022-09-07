@@ -1,0 +1,58 @@
+<div>
+  <div class="contactlist-header">
+    <div class="profile-image-div">
+      <img src="../../../assets/profile.png" />
+    </div>
+    <div>
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="menu button"
+      >
+        <mat-icon class="menu-icon">more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item routerLink="/add">
+          <mat-icon>add_circle</mat-icon>
+          <span>New Contact</span>
+        </button>
+        <button mat-menu-item routerLink="/add-group">
+          <mat-icon>group_add</mat-icon>
+          <span>New Group</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="contactlist-search">
+    <app-search (searchEvent)="getSearchValue($event)"></app-search>
+  </div>
+  <div class="contactlist-list">
+    <div *ngFor="let contact of contactList">
+      <div
+        *ngIf="
+          searchTerm === '' ||
+          contact.name.toLowerCase().includes(searchTerm.toLowerCase())
+        "
+        class="contact-subcontainer"
+      >
+        <div
+          class="contact-container"
+          [ngStyle]="{
+            backgroundColor: contact.select
+              ? 'rgba(190, 248, 188, 0.541)'
+              : 'rgba(255, 255, 255)'
+          }"
+          (click)="contactClick(contact.id)"
+        >
+          <div class="contact-image-div">
+            <img src="{{ contact.image }}" />
+          </div>
+          <div class="contact-details-div">
+            <h2>{{ contact.name }}</h2>
+            <h3>{{ contact.date | date: "dd/MM/yyyy" }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

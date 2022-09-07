@@ -6,16 +6,16 @@ import { ContactDetailsComponent } from './components/contact-details/contact-de
 import { GroupsComponent } from './components/groups/groups.component';
 import { AddGroupComponent } from './components/add-group/add-group.component';
 import { GroupDetailsComponent } from './components/group-details/group-details.component';
+import { DetailsComponent } from './components/details/details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'contacts', pathMatch: 'full' },
-  { path: 'contacts', component: ContactsComponent },
+  { path: '', component: DetailsComponent },
   { path: 'add', component: AddContactComponent },
   { path: 'contact-details/:id', component: ContactDetailsComponent },
   { path: 'groups', component: GroupsComponent },
   { path: 'add-group', component: AddGroupComponent },
   { path: 'group-details/:id', component: GroupDetailsComponent },
-  { path: '**', redirectTo: 'contacts' },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

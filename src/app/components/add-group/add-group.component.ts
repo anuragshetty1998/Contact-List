@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ContactService } from '../../services/contact.service';
 import { GroupService } from '../../services/group.service';
 import { Contact } from '../../contact';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-group',
@@ -13,11 +14,15 @@ export class AddGroupComponent implements OnInit {
   contactList: Contact[];
   checkArray: string[] = [];
   checkSelected: boolean = false;
+
+  selectedArray: string[] = [];
   @ViewChild('groupForm') groupForm: NgForm;
+  grpImgUrl: string = '../../../assets/group-icon.png';
 
   constructor(
     private groupService: GroupService,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private route: Router
   ) {}
 
   randomId() {
@@ -47,14 +52,32 @@ export class AddGroupComponent implements OnInit {
     }
   }
 
+  onSelectFile(event: any) {
+    if (event.target.files) {
+      let reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (load: any) => {
+        this.grpImgUrl = load.target.result;
+      };
+    }
+  }
+
+  getSelected(data: any) {
+    this.selectedArray = data;
+    console.log(this.selectedArray);
+  }
+
   onSubmit() {
-    console.log(this.groupForm);
     if (this.groupForm.valid) {
       this.groupService.addGroup({
         id: this.randomId(),
         name: this.groupForm.value.groupname,
-        members: this.checkArray,
+        members: this.selectedArray,
+        date: Date.now(),
+        image: this.grpImgUrl,
       });
+      this.grpImgUrl = '../../../assets/profile.png';
+      this.route.navigate(['']);
     }
     this.groupForm.reset();
     this.getData();

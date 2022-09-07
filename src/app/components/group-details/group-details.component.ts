@@ -26,14 +26,17 @@ export class GroupDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.groupId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.getGroup();
+    this.activatedRoute.paramMap.subscribe((param) => {
+      this.groupId = param.get('id');
+      this.getGroup();
+    });
   }
 
   getGroup() {
     this.group = this.groupService
       .getGrouptList()
       .find((x) => x.id === this.groupId);
+    this.membertList = [];
     this.getContacts();
   }
 
@@ -52,7 +55,7 @@ export class GroupDetailsComponent implements OnInit {
 
   onDelete(id: string) {
     this.groupService.deleteGroup(id);
-    this.route.navigate(['groups']);
+    this.route.navigate(['']);
   }
 
   removeSelected(id: string) {
@@ -61,29 +64,29 @@ export class GroupDetailsComponent implements OnInit {
     this.getGroup();
   }
 
-  onAddButton() {
-    this.editEnable = !this.editEnable;
-    if (!this.editEnable) {
-      this.contactList.map((item: Contact) => {
-        if (item.select) {
-          this.idArray.push(item.id);
-        }
-      });
-      this.groupService.editGroup(this.groupId, this.idArray);
-    }
-    this.contactList = [];
-    this.membertList = [];
-    this.idArray = [];
-    this.getGroup();
-  }
+  // onAddButton() {
+  //   this.editEnable = !this.editEnable;
+  //   if (!this.editEnable) {
+  //     this.contactList.map((item: Contact) => {
+  //       if (item.select) {
+  //         this.idArray.push(item.id);
+  //       }
+  //     });
+  //     this.groupService.editGroup(this.groupId, this.idArray);
+  //   }
+  //   this.contactList = [];
+  //   this.membertList = [];
+  //   this.idArray = [];
+  //   this.getGroup();
+  // }
 
-  toggleSelected(id: string, valueSelect: boolean) {
-    this.contactList = this.contactList.map((item: Contact) => {
-      if (item.id === id) {
-        item.select = valueSelect;
-        return item;
-      }
-      return item;
-    });
-  }
+  // toggleSelected(id: string, valueSelect: boolean) {
+  //   this.contactList = this.contactList.map((item: Contact) => {
+  //     if (item.id === id) {
+  //       item.select = valueSelect;
+  //       return item;
+  //     }
+  //     return item;
+  //   });
+  // }
 }

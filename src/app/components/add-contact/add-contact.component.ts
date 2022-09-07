@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ContactService } from '../../services/contact.service';
 
 @Component({
@@ -8,13 +9,10 @@ import { ContactService } from '../../services/contact.service';
   styleUrls: ['./add-contact.component.scss'],
 })
 export class AddContactComponent implements OnInit {
-  constructor(private contactService: ContactService) {}
+  constructor(private contactService: ContactService, private route: Router) {}
+  imgUrl = '../../../assets/profile-icon.jpeg';
 
   @ViewChild('contactForm') contactForm: NgForm;
-  // firstname: string;
-  // lastname: string;
-  // email: string;
-  // phone: number;
 
   ngOnInit(): void {}
 
@@ -22,11 +20,17 @@ export class AddContactComponent implements OnInit {
     return '_' + Math.random().toString(36).substr(2, 9);
   }
 
+  onSelectFile(event: any) {
+    if (event.target.files) {
+      let reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (load: any) => {
+        this.imgUrl = load.target.result;
+      };
+    }
+  }
+
   onSubmit() {
-    // this.firstname = this.contactForm.value.contactGroup.firstname;
-    // this.lastname = this.contactForm.value.contactGroup.lastname;
-    // this.email = this.contactForm.value.email;
-    // this.phone = Number(this.contactForm.value.contactGroup.phone);
     if (this.contactForm.valid) {
       this.contactService.addContact({
         firstname: this.contactForm.value.firstname,
@@ -34,8 +38,16 @@ export class AddContactComponent implements OnInit {
         email: this.contactForm.value.email,
         phone: Number(this.contactForm.value.phone),
         id: this.randomId(),
+        name:
+          this.contactForm.value.firstname +
+          ' ' +
+          this.contactForm.value.lastname,
+        image: this.imgUrl,
+        date: Date.now(),
       });
       this.contactForm.reset();
+      this.imgUrl = '../../../assets/profile-icon.jpeg';
+      this.route.navigate(['']);
     }
   }
 }

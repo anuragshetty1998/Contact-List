@@ -1,46 +1,42 @@
-<div class="details-page-div">
-  <div class="details-container mat-elevation-z8">
-    <h1>ADD GROUP</h1>
-    <form (ngSubmit)="onSubmit()" #groupForm="ngForm">
-      <div>
-        <label for="first">Group Name</label>
-        <input
-          type="text"
-          id="name"
-          placeholder="Group name"
-          name="groupname"
-          #nameTemp="ngModel"
-          ngModel
-          required
-        />
-        <small *ngIf="nameTemp.invalid && nameTemp.touched"
-          >Group Name is required field.</small
-        >
+<div class="display-div">
+  <div class="contacts-container">
+    <app-contact-list (selectEvent)="getSelected($event)"></app-contact-list>
+  </div>
+  <div class="contacts-details">
+    <div class="header-div">
+      <h2>ADD GROUP</h2>
+    </div>
+    <div class="details-container mat-elevation-z8">
+      <div class="image-div">
+        <img [src]="grpImgUrl" />
+        <input type="file" (change)="onSelectFile($event)" />
       </div>
-      <p class="members-label">Members</p>
-      <div class="members-div">
-        <div *ngFor="let contact of contactList" class="members-sub-div">
-          <div>
-            <p class="name-text">
-              {{ contact.firstname + " " + contact.lastname }}
-            </p>
-            <p class="phone-text">{{ contact.phone }}</p>
-          </div>
-
+      <form (ngSubmit)="onSubmit()" #groupForm="ngForm">
+        <div>
+          <label for="first">Group Name</label>
+          <br />
           <input
-            type="checkbox"
-            value="{{ contact.id }}"
-            [checked]="contact.select"
-            (change)="checkChange($event)"
+            type="text"
+            id="name"
+            placeholder="Group name"
+            name="groupname"
+            #nameTemp="ngModel"
+            ngModel
+            required
           />
+          <br />
+          <small *ngIf="nameTemp.invalid && nameTemp.touched"
+            >Group Name is required field.</small
+          >
         </div>
-      </div>
-      <small *ngIf="groupForm.invalid && checkSelected && groupForm.submitted"
-        >Enter required fields.</small
-      >
-      <div style="position: relative; width: 100%">
-        <input type="submit" value="Submit" id="btn" />
-      </div>
-    </form>
+        <br />
+        <small *ngIf="groupForm.invalid && checkSelected && groupForm.submitted"
+          >Enter required fields.</small
+        >
+        <div style="position: relative; width: 100%">
+          <input type="submit" value="Submit" id="btn" />
+        </div>
+      </form>
+    </div>
   </div>
 </div>

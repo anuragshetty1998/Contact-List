@@ -1,17 +1,41 @@
-.details-page-div {
-  position: relative;
+.display-div {
+  width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+}
+.contacts-container {
+  position: relative;
+  overflow: hidden;
+  // z-index: 100;
+  height: 100%;
+  // border-right: 10px solid #f0f2f500;
+  width: 27%;
+  background-color: rgba(255, 255, 255, 0.918);
+}
+
+.contacts-details {
+  width: 73%;
+  height: 100%;
+  background-color: rgba(255, 225, 187, 0.829);
+  background-image: url("../../../assets/background-img.jpeg");
+  background-size: cover;
 }
 
 .details-container {
   //height: fit-content;
-  height: 67vh;
-  width: 25vw;
+  height: max-content;
+  width: 30vw;
   background-color: rgb(255, 255, 255);
   margin: auto;
   margin-top: 58px;
   padding: 1.3rem 1rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   h1 {
     color: rgba(245, 172, 88, 0.904);
     font-size: 2.3rem;
@@ -20,9 +44,12 @@
     font-family: Georgia, "Times New Roman", Times, serif;
   }
 }
+form {
+  margin-top: 25px;
+}
 
 input[type="text"] {
-  width: 100%;
+  width: 27vw;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -38,7 +65,7 @@ label {
 }
 
 input[type="submit"] {
-  width: 100%;
+  width: 27vw;
   background-color: #4caf50;
   color: white;
   padding: 10px 20px;
@@ -96,4 +123,45 @@ small {
   font-size: 1.1rem;
   color: rgba(0, 0, 0, 0.794);
   margin-top: 10px;
+}
+
+.header-div {
+  background-color: #f0f2f5;
+  width: 97.3%;
+  height: 38px;
+  padding: 10px 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid rgba(168, 168, 168, 0.548);
+  // z-index: 1000;
+  mat-icon {
+    transform: scale(1.2);
+  }
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: rgb(0, 0, 0);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin: 0;
+}
+
+.image-div {
+  margin: 0px 30px 10px 0px;
+  display: flex;
+  flex-direction: column;
+  input {
+    width: 85px;
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+}
+
+img {
+  width: 130px;
+  height: 130px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
 }
